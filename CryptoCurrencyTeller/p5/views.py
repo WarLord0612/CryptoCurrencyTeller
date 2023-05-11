@@ -14,7 +14,7 @@ import json
 from binance.exceptions import BinanceAPIException
 
 def pDoge(request):
-    lot_size=60
+    
     symbol='DOGEUSDT'
     import requests
     from binance.client import Client
