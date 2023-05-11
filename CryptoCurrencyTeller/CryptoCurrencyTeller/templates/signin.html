@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn-CryptoCurrencyTeller</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+</head>
+<body>
+ 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">CryptoCurrencyTeller</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.businessinsider.in/investment/news/cryptocurrency-faqs-everything-you-need-to-know-about-the-cryptocurrencies-the-crypto-market-and-everything-in-between/articleshow/87465186.cms">About Project</a>
+        </li>
+        
+      </ul>
+      
+   
+  </nav><img src="{% static 'images.jpg' %}" alt=""  height="687" width="1200" style="float : right;">
+  <br>
+  <br>
+
+    <form method="post" action="{% url 'signin_evaluate' %}">
+      {% csrf_token %}
+      <h1 class="display-4" >Sign in</h1>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <div class="form-group">
+        <pre for="exampleInputEmail1">  Email address</pre>
+        <pre><input type="email" style="width:500px; height:55px;" class="form-control" name="email" value="" cols="20" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/></pre>
+      </div>
+      
+      <br>
+      <div class="form-group">
+        <pre for="exampleInputPassword1">  Password</pre>
+        
+        <input type="password" style="width:500px; height:55px;"  name="text" value="" class="form-control" cols="20" id="exampleInputPassword1" placeholder="Password">
+                
+            </div>
+            <br>
+  <br>
+  <br>
+  <br>
+  <pre>                                                  <button type="submit" style="width:160px; height:60px; font-size:20px;" class="btn btn-primary">Submit</button></pre>
+        
+    </form>
+    <br>
+    <br>
+    
+    
+    <hr class="my-4">
+    <br>
+    <br>
+    
+    <footer class="bg-light text-center text-lg-start">
+      
+
+      <div class="container p-4">
+
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">About CryptoCurrencyTeller:</h5>
+    
+            <p>
+              Predicts high prices for cryptocurrencies. CryptoCurrenctTeller currently extends services for the following cryptocurrencies : BTC,ETH,AAVE,XRP and DOGE.
+
+            </p>
+          </div>
+
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Contact Info:</h5>
+    
+            <p>
+
+              E-mail:   srikanthm_is19.rvitm@rvei.edu.in , annayaks_is19.rvitm@rvei.edu.in<br>
+              Ph-num: +91 9731778625 , +91 9900122175 <br>  
+
+            </p>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-dark" href="{% url 'signin_evaluate' %}">CryptoCurrencyTeller</a>
+      </div>
+     
+    </footer>
+    
+      
+  
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoCurrencyTeller</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">CryptoCurrencyTeller</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.businessinsider.in/investment/news/cryptocurrency-faqs-everything-you-need-to-know-about-the-cryptocurrencies-the-crypto-market-and-everything-in-between/articleshow/87465186.cms">About Project</a>
+        </li>
+        
+      </ul>
+      
+   
+  </nav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+  <div class="jumbotron bg-cover text-white" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/015.webp')">
+    <div class="jumbotron container">
+     
+   <br>
+      <h1 class="display-4">Dive into the $$$ pool today!</h1>
+      <p class="lead">Predict peaks in the market with precision. </p>
+      <hr class="my-4">
+      <p>Analysing market conditions to serve an accurate prediction model.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="https://accounts.binance.com/en/login?return_to=aHR0cHM6Ly93d3cuYmluYW5jZS5jb20vZW4%3D" role="button">Let's get Started!</a>
+      </p>
+       <br>
+       <br>
+       <br>
+       
+       <br>
+       <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Stats</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          
+            <td>Bitcoin</td>
+            <td>BTC/USDT</td>
+            <td><a class="btn btn-outline-info" href="{% url 'Bitcoin' %}" role="button">Info</a></td>
+          </tr>
+          <tr>
+         
+            <td>Ethereum</td>
+            <td>ETH/USDT</td>
+            <td><a class="btn btn-outline-info" href="{% url 'Ethereum' %}" role="button">Info</a></td>
+          </tr>
+          <tr>
+           
+            <td>Ripple</td>
+            <td>XRP/USDT</td>
+            <td><a class="btn btn-outline-info" href="{% url 'Ripple' %}" role="button">Info</a></td>
+          </tr>
+          <tr>
+          
+            <td>Aave</td>
+            <td>AAVE/USDT</td>
+            <td><a class="btn btn-outline-info" href="{% url 'Avalanche' %}" role="button">Info</a></td>
+          </tr>
+          <tr>
+            
+            <td>Dogecoin</td>
+            <td>DOGE/USDT</td>
+            <td><a class="btn btn-outline-info" href="{% url 'Dogecoin' %}" role="button">Info</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <br> 
+      
+      </div>
+
+</body>
+</html>
