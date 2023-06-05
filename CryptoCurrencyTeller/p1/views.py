@@ -17,7 +17,7 @@ from binance.exceptions import BinanceAPIException
 def pBit(request):
     
     symbol='BTCUSDT'    
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine=sqlalchemy.create_engine('sqlite:///crypto.db')
     btc=pandas.read_sql('coin_Bitcoin',engine)
     btc=pandas.DataFrame({'Symbol':'BTC','High':btc['High'],'Low':btc['Low'],'Open':btc['Open'],'Volume':btc['Volume'],'Marketcap':btc['Marketcap']})
@@ -38,19 +38,22 @@ def pBit(request):
     data=float(reg.predict([k]))
     print(t2)
     quantity=float(request.POST.get('quantity'))
+    if quantity<0.25:
+        quantity=0.25
     
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json', 'r') as f:
+    with open('credentials.json', 'r') as f:
         c = json.load(f)
         if c['BTCacc']<0:
-            data=0.95*data
+            data=0.8*data
         client = Client(c["api_key"],c["api_secret"],testnet = True)
 
         try:
             if data>t2:
                 client.futures_create_order(symbol=symbol,side='BUY',type='MARKET',quantity=quantity)
-                client.futures_create_order(symbol=symbol,side='SELL',type='STOP_MARKET',stopPrice=round(0.9*t2,3),closePosition='true',quantity=quantity)
-                client.futures_create_order(symbol=symbol,side='SELL',type='TAKE_PROFIT_MARKET',stopPrice=round(data,3),closePosition='true',quantity=quantity)
-
+                client.futures_create_order(symbol=symbol,side='SELL',type='STOP_MARKET',stopPrice=round(0.9*t2,2),closePosition='true',quantity=quantity)
+                client.futures_create_order(symbol=symbol,side='SELL',type='TAKE_PROFIT_MARKET',stopPrice=round(data,2),closePosition='true',quantity=quantity)
+            else:
+                return render(request,'alert_time.html')
         except BinanceAPIException:
             return render(request,'alert.html')
 

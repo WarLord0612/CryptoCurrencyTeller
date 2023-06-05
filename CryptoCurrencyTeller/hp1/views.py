@@ -11,7 +11,7 @@ import requests
 from matplotlib import pyplot
 # Create your views here.
 def Bitcoin(request):
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine=sqlalchemy.create_engine('sqlite:///crypto.db')
     btc=pandas.read_sql('coin_Bitcoin',engine)
     btc=pandas.DataFrame({'Symbol':'BTC','High':btc['High'],'Low':btc['Low'],'Open':btc['Open'],'Volume':btc['Volume'],'Marketcap':btc['Marketcap']})
@@ -36,7 +36,7 @@ def Bitcoin(request):
     k=[t1,t2,t3,t4]
     data=float(reg.predict([k]))
     import json
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','r') as f:
+    with open('credentials.json','r') as f:
         c=json.load(f)
 
     pyplot.plot(range(1,11),list(btc.tail(10)['High'].to_numpy()),label="Bitcoin's performance",marker='o',markerfacecolor='blue')
@@ -45,7 +45,7 @@ def Bitcoin(request):
     pyplot.xlabel('Days')
     pyplot.grid(True,linewidth=1,linestyle='-.')
     pyplot.legend(loc='upper right')
-    pyplot.savefig(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\CryptoCurrencyTeller\static\plot1.png',dpi=500)
+    pyplot.savefig('CryptoCurrencyTeller\static\plot1.png',dpi=500)
       
     pyplot.close()
     if c['BTCacc']<0:

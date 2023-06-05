@@ -8,7 +8,7 @@ from sklearn import linear_model
 
 # Create your views here.
 def Ripple(request):
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine = sqlalchemy.create_engine('sqlite:///crypto.db')
     xrp=pandas.read_sql('coin_XRP',engine)
     xrp=pandas.DataFrame({'Symbol':'XRP','High':xrp['High'],'Low':xrp['Low'],'Open':xrp['Open'],'Volume':xrp['Volume'],'Marketcap':xrp['Marketcap']})
@@ -30,7 +30,7 @@ def Ripple(request):
     k=[t1,t2,t3,t4]
     data=float(reg3.predict([k]))
     import json
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','r') as f:
+    with open('credentials.json','r') as f:
         c=json.load(f)
 
     from matplotlib import pyplot
@@ -40,7 +40,7 @@ def Ripple(request):
     pyplot.xlabel('Days')
     pyplot.grid(True,linewidth=1,linestyle='-.')
     pyplot.legend(loc='upper right')
-    pyplot.savefig(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\CryptoCurrencyTeller\static\plot3.png',dpi=500)
+    pyplot.savefig('CryptoCurrencyTeller\static\plot3.png',dpi=500)
     pyplot.close()
     if c['XRPacc']<0:
         data=0.95*data

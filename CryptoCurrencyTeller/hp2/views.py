@@ -10,7 +10,7 @@ from time import sleep
 
 # Create your views here.
 def Ethereum(request):
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine = sqlalchemy.create_engine('sqlite:///crypto.db')
     eth=pandas.read_sql('coin_Ethereum',engine)
     eth=pandas.DataFrame({'Symbol':'ETH','High':eth['High'],'Low':eth['Low'],'Open':eth['Open'],'Volume':eth['Volume'],'Marketcap':eth['Marketcap']})
@@ -34,7 +34,7 @@ def Ethereum(request):
     k=[t1,t2,t3,t4]
     data=float(reg2.predict([k]))
     import json
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','r') as f:
+    with open('credentials.json','r') as f:
         c=json.load(f)
 
     from matplotlib import pyplot
@@ -44,7 +44,7 @@ def Ethereum(request):
     pyplot.xlabel('Days')
     pyplot.grid(True,linewidth=1,linestyle='-.')
     pyplot.legend(loc='upper right')
-    pyplot.savefig(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\CryptoCurrencyTeller\static\plot2.png',dpi=500)
+    pyplot.savefig('CryptoCurrencyTeller\static\plot2.png',dpi=500)
     pyplot.close()
     if c['ETHacc']<0:
         data=0.95*data

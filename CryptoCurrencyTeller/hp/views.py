@@ -16,19 +16,19 @@ def home(request):
     symbols=['AAVE','BTC','DOGE','ETH','XRP']
     tables=['coin_Aave','coin_Bitcoin','coin_Dogecoin','coin_Ethereum','coin_XRP']
     today = date.today()
-    fh=open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\date.txt','r')
+    fh=open('date.txt','r')
     d2=str(fh.read())
     d2 =  datetime.strptime(d2, '%Y-%m-%d')
     fh.close()
     d1 =  date.today()
-    fhw=open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\date.txt','w')
+    fhw=open('date.txt','w')
     fhw.write(str(d1))
     fhw.close()
     d1 = datetime.strptime(str(d1), '%Y-%m-%d')
     
 
     delta = d1 - d2
-    os.chdir('C:\\Users\\mohan\\Desktop')
+    os.chdir('<database_directory>')
     engine = sqlalchemy.create_engine("sqlite:///crypto.db")
 
     if delta.days!=0:
@@ -40,7 +40,7 @@ def home(request):
             df=pandas.DataFrame(d)
             df.to_sql(tables[i],engine,if_exists='append',index=False)
 
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','r') as f:
+    with open('credentials.json','r') as f:
         c=dict(json.load(f))
         options=webdriver.ChromeOptions()
         #options.headless=True
@@ -84,7 +84,7 @@ def home(request):
         driver.quit()
         
 
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','w') as f1:
+    with open('credentials.json','w') as f1:
          json.dump(c,f1)
     
     return render(request,'signin.html')
@@ -95,7 +95,7 @@ def signin_evaluate(request):
     u=request.POST.get('email')
     p=request.POST.get('text')
     import json
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json', 'r') as f:
+    with open('credentials.json', 'r') as f:
                 c = json.load(f)
 
     try :

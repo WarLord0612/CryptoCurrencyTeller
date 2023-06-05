@@ -10,7 +10,7 @@ from sklearn import linear_model
 
 # Create your views here.
 def Avalanche(request):
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine = sqlalchemy.create_engine('sqlite:///crypto.db')
     aave=pandas.read_sql('coin_Aave',engine)
     aave=pandas.DataFrame({'Symbol':'AAVE','High':aave['High'],'Low':aave['Low'],'Open':aave['Open'],'Volume':aave['Volume'],'Marketcap':aave['Marketcap']})
@@ -32,7 +32,7 @@ def Avalanche(request):
     k=[t1,t2,t3,t4]
     data=float(reg4.predict([k]))
     import json
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','r') as f:
+    with open('credentials.json','r') as f:
         c=json.load(f)
       
     from matplotlib import pyplot
@@ -42,7 +42,7 @@ def Avalanche(request):
     pyplot.xlabel('Days')
     pyplot.grid(True,linewidth=1,linestyle='-.')
     pyplot.legend(loc='upper right')
-    pyplot.savefig(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\CryptoCurrencyTeller\static\plot4.png',dpi=500)
+    pyplot.savefig('CryptoCurrencyTeller\static\plot4.png',dpi=500)
     pyplot.close()
     if c['AAVEacc']<0:
         data=0.95*data

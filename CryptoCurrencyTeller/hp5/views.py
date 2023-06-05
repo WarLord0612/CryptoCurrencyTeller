@@ -7,7 +7,7 @@ from sklearn import linear_model
 
 # Create your views here.
 def Dogecoin(request):
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine = sqlalchemy.create_engine('sqlite:///crypto.db')
     doge=pandas.read_sql('coin_Dogecoin',engine)
     doge=pandas.DataFrame({'Symbol':'DOGE','High':doge['High'],'Low':doge['Low'],'Open':doge['Open'],'Volume':doge['Volume'],'Marketcap':doge['Marketcap']})
@@ -28,7 +28,7 @@ def Dogecoin(request):
     k=[t1,t2,t3,t4]
     data=float(reg5.predict([k]))
     import json
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json','r') as f:
+    with open('credentials.json','r') as f:
         c=json.load(f)
       
     from matplotlib import pyplot
@@ -38,7 +38,7 @@ def Dogecoin(request):
     pyplot.xlabel('Days')
     pyplot.grid(True,linewidth=1,linestyle='-.')
     pyplot.legend(loc='upper right')
-    pyplot.savefig(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\CryptoCurrencyTeller\static\plot5.png',dpi=500)
+    pyplot.savefig('CryptoCurrencyTeller\static\plot5.png',dpi=500)
     
     pyplot.close()
     if c['BTCacc']<0:

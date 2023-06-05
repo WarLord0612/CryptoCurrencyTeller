@@ -18,7 +18,7 @@ from binance.exceptions import BinanceAPIException
 def pAave(request):
 
     symbol='AAVEUSDT'
-    os.chdir(r'C:\Users\mohan\Desktop')
+    os.chdir('<database_directory>')
     engine = sqlalchemy.create_engine('sqlite:///crypto.db')
     aave=pandas.read_sql('coin_Aave',engine)
     aave=pandas.DataFrame({'Symbol':'AAVE','High':aave['High'],'Low':aave['Low'],'Open':aave['Open'],'Volume':aave['Volume'],'Marketcap':aave['Marketcap']})
@@ -41,21 +41,23 @@ def pAave(request):
     data=float(reg4.predict([k]))
     
     quantity=float(request.POST.get('quantity'))
+    if quantity<35:
+        quantity=35
     
-    with open(r'C:\Users\mohan\Desktop\CryptoCurrencyTeller\credentials.json', 'r') as f:
+    with open('credentials.json', 'r') as f:
         c = json.load(f)
         if c['AAVEacc']<0:
-            data=0.95*data
+            data=0.8*data
 
         client = Client(c["api_key"],c["api_secret"],testnet = True)
 
         try:
             if data>t2:
                 client.futures_create_order(symbol=symbol,side='BUY',type='MARKET',quantity=quantity)
-                client.futures_create_order(symbol=symbol,side='SELL',type='STOP_MARKET',stopPrice=round(0.9*t2,3),closePosition='true',quantity=quantity)
-            
-                client.futures_create_order(symbol=symbol,side='SELL',type='TAKE_PROFIT_MARKET',stopPrice=round(data,3),closePosition='true',quantity=quantity)
-
+                client.futures_create_order(symbol=symbol,side='SELL',type='STOP_MARKET',stopPrice=round(0.9*t2,2),closePosition='true',quantity=quantity)
+                client.futures_create_order(symbol=symbol,side='SELL',type='TAKE_PROFIT_MARKET',stopPrice=round(data,2),closePosition='true',quantity=quantity)
+            else:
+                return render(request,'alert_time.html')
         except BinanceAPIException:
             return render(request,'alert.html')
 
